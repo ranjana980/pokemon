@@ -1,6 +1,7 @@
 
 import './App.css';
-import PokemonList from './Component/PokemonList';
+import React from 'react';
+const PokemonList = React.lazy(() => import('./Component/PokemonList'));
 function App() {
   return (
     <div className="App bg-primary" >

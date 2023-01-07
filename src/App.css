@@ -3,13 +3,37 @@
 }
 
 
-/* .card{
-  height: 400px;
-  overflow: hidden;
-} */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px
+}
+
+img {
+  height: 300px;
+  width: 250px;
+}
+
+.scroll-btn::-webkit-scrollbar-button {
+  background: #ccc
+}
+
+.scroll-btn::-webkit-scrollbar-track-piece {
+  background: #eee
+}
+
+.scroll-btn::-webkit-scrollbar-thumb {
+  /* width: 2px; */
+  background: gray;
+  border-radius: 3px;
+  height: 40px;
+}
+.scroll-btn::-webkit-scrollbar {
+  width: 8px;
+}
 .card:hover .hover-div {
   opacity: .5;
 }
+
 .hover-div {
   position: absolute;
   top: 9px;
@@ -23,6 +47,7 @@
   background-color: black;
   border-radius: 10px;
 }
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -39,7 +64,19 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 578px) {
+  img {
+    height: 318px;
+    width: 341px;
+  }
+  .card{
+    margin-right: 10px;
+  }
+
 }
