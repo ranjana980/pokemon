@@ -24,8 +24,8 @@ export default function PokemonList() {
         <div className='bg-primary scroll-btn' style={{ height: '45rem', overflowY: 'scroll', scrollBehavior: 'smooth' }} onScroll={() => setPage(page + 1)}>
             <div className='container  bg-primary'>
                 <div className='row ' >
-                    {dataList.map((item) => (
-                        <div className='card col-lg-3  col-sm-1 ml-2 mt-2 justify-content-start'>
+                    {dataList.map((item,index) => (
+                        <div key={index} className='card col-lg-3  col-sm-1 ml-2 mt-2 justify-content-start'>
                             <img src={item.images.small} className='mt-2 ' />
                             <div className='d-flex justify-content-between'>
                                 <b style={{ textAlign: 'start' }}>{item.name}</b>
