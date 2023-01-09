@@ -7,6 +7,7 @@ export default function PokemonList() {
     const [dataList, setDataList] = useState([])
     const [page, setPage] = useState(1)
     const [loader, setLoader] = useState(false)
+    const [total, setTotal] = useState(0)
 
     useEffect(() => {
         getpokemonInfo(page)
@@ -14,17 +15,32 @@ export default function PokemonList() {
 
     const getpokemonInfo = async (page) => {
         setLoader(true)
-        const result = await axios.get(`https://api.pokemontcg.io/v2/cards?page=${page}&pageSize=${10}`)
-        const list = dataList.concat(result.data.data);
-        setDataList(list)
-        setLoader(false)
+        if (dataList.length <= total) {
+            const result = await axios.get(`https://api.pokemontcg.io/v2/cards?page=${page}&pageSize=${10}`)
+            setTotal(result.data.totalCount)
+            const list = dataList.concat(result.data.data);
+            // console.log(list, 'listtt')
+            setDataList(list)
+            setLoader(false)
+
+        }
+
+
+        // }
+
     }
 
     return (
-        <div className='bg-primary scroll-btn' style={{ height: '45rem', overflowY: 'scroll', scrollBehavior: 'smooth' }} onScroll={() => setPage(page + 1)}>
+        <div className='bg-primary scroll-btn' style={{ minHeight: '35rem', maxHeight: '55rem', overflowY: 'scroll', scrollBehavior: 'smooth' }} onScroll={() => {
+            if (!loader) {
+                setPage(page + 1)
+
+            }
+
+        }}>
             <div className='container  bg-primary'>
                 <div className='row ' >
-                    {dataList.map((item,index) => (
+                    {dataList.map((item, index) => (
                         <div key={index} className='card col-lg-3  col-sm-1 ml-2 mt-2 justify-content-start'>
                             <img src={item.images.small} className='mt-2 ' />
                             <div className='d-flex justify-content-between'>
