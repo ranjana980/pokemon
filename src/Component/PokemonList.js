@@ -31,7 +31,7 @@ export default function PokemonList() {
     }
 
     return (
-        <div className='bg-primary scroll-btn' style={{ minHeight: '35rem', maxHeight: '55rem', overflowY: 'scroll', scrollBehavior: 'smooth' }} onScroll={() => {
+        <div className='bg-primary scroll-btn' style={{ minHeight: '35rem', maxHeight: '95rem', overflowY: 'scroll', scrollBehavior: 'smooth' }} onScroll={() => {
             if (!loader) {
                 setPage(page + 1)
 
